@@ -1,23 +1,34 @@
 require 'gosu'
 require './entity'
+require './node'
 
 class GameWindow < Gosu::Window
 	def initialize
-		super 250, 200, fullscreen: true
-		@background_entity = Entity.new("media/arbre.png", 0, 0, 0)
-		# Create the wizard and make them walk
-		@wizard_entity = Entity.new("media/wizard.png", 0, 0, 0)
-		@wizard_entity.add_animation(:walk, 100, 32, 32, 20, 30)
-		@wizard_entity.set_current_animation(:walk)
+		super 250, 200
+		
+		# Everything is connected to the parent node to everything
+		@root_node = Node.new(0, 0, 0)
+		
+		
+		background_entity = Entity.new("media/arbre.png", 0, 0, 0)
+		background_node = Node.new(0, 0, 0)
+		background_node.add_child(background_entity)
+		@root_node.add_child(background_node)		
+	
+		wizard_entity = Entity.new("media/wizard.png", 0, 0, 0)
+		wizard_entity.add_animation(:walk, 100, 32, 32, 20, 30)
+		wizard_entity.set_current_animation(:walk)
+		@player_node = Node.new(0, 0, 0)
+		@player_node.add_child(wizard_entity)
+		@root_node.add_child(@player_node)
 	end
 	
 	def update
-
+		@root_node.update
 	end
 
 	def draw
-		@background_entity.draw
-		@wizard_entity.draw
+		@root_node.draw
 	end
 
 	def button_down(id)
