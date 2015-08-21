@@ -15,7 +15,8 @@ class Entity
     #TODO
   end
 
-  def draw
+  def draw(parent_x, parent_y, parent_z)
+		entity_x, entity_y, entity_z = parent_x + x, parent_y + y, parent_z + z
     if @current_animation.nil?
       @image.draw(x, y, z)
     else

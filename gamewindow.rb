@@ -6,7 +6,7 @@ class GameWindow < Gosu::Window
 	def initialize
 		super 250, 200
 		
-		# Everything is connected to the parent node to everything
+		# Everything is connected to the root node
 		@root_node = Node.new(0, 0, 0)
 		
 		
@@ -28,7 +28,7 @@ class GameWindow < Gosu::Window
 	end
 
 	def draw
-		@root_node.draw
+		@root_node.draw(0, 0, 0)
 	end
 
 	def button_down(id)
