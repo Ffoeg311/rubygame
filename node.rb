@@ -1,6 +1,6 @@
 class Node
 
-  attr_accessor :children
+  attr_accessor :children, :x, :y, :z
   
   def initialize(x, y, z)
     @x, @y, @z = x, y, z
@@ -19,7 +19,17 @@ class Node
     @children.each { |child| child.update }
   end
 
-  def draw
-    @children.each { |child| child.draw }
+  def draw(parent_x, parent_y, parent_z)
+    @children.each { |child| child.draw(@x + parent_x, @y + parent_y, @z + parent_z)}
   end
+end
+
+class Controller
+	def initialize
+
+	end
+
+	def update
+
+	end
 end
