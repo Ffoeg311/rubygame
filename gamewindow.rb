@@ -9,18 +9,24 @@ class GameWindow < Gosu::Window
 		# Everything is connected to the root node
 		@root_node = Node.new(0, 0, 0)
 		
-		
+		# Create the background entity
 		background_entity = Entity.new("media/arbre.png", 0, 0, 0)
 		background_node = Node.new(0, 0, 0)
 		background_node.add_child(background_entity)
 		@root_node.add_child(background_node)		
 	
+		# Create the main player
 		wizard_entity = Entity.new("media/wizard.png", 0, 0, 0)
 		wizard_entity.add_animation(:walk, 100, 32, 32, 20, 30)
 		wizard_entity.set_current_animation(:walk)
-		@player_node = Node.new(32, 0, 0)
-		@player_node.add_child(wizard_entity)
-		@root_node.add_child(@player_node)
+		player_node = Node.new(32, 0, 0)
+		player_node.add_child(wizard_entity)
+
+		# Control the main player
+		playercontroller = RPGMovementController.new	
+		player_node.add_controller(playercontroller)
+		
+		@root_node.add_child(player_node)
 	end
 	
 	def update
