@@ -18,7 +18,7 @@ class GameWindow < Gosu::Window
 		wizard_entity = Entity.new("media/wizard.png", 0, 0, 0)
 		wizard_entity.add_animation(:walk, 100, 32, 32, 20, 30)
 		wizard_entity.set_current_animation(:walk)
-		@player_node = Node.new(0, 0, 0)
+		@player_node = Node.new(32, 0, 0)
 		@player_node.add_child(wizard_entity)
 		@root_node.add_child(@player_node)
 	end
@@ -28,7 +28,7 @@ class GameWindow < Gosu::Window
 	end
 
 	def draw
-		@root_node.draw(0, 0, 0)
+		@root_node.draw(@root_node.x, @root_node.y, @root_node.z)
 	end
 
 	def button_down(id)

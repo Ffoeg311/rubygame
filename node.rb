@@ -20,7 +20,7 @@ class Node
   end
 
   def draw(parent_x, parent_y, parent_z)
-    @children.each { |child| child.draw(@x, @y, @z)}
+    @children.each { |child| child.draw(@x + parent_x, @y + parent_y, @z + parent_z)}
   end
 end
 
