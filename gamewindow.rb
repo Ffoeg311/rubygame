@@ -1,6 +1,7 @@
 require 'gosu'
 require './entity'
 require './node'
+require './boilerplates/rpg_movement_controller'
 
 class GameWindow < Gosu::Window
   def initialize
