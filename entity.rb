@@ -32,4 +32,14 @@ class Entity
     @current_animation = animations[next_animation]
   end
 
+  def has_anim?(animation)
+    animations.has_key? animation
+  end
+
+  def has_anims?(*animations)     
+    animations.each do |animation|
+      return false if not has_anim?(animation)
+    end
+    return true
+  end
 end

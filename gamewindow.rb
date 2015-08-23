@@ -4,7 +4,7 @@ require './node'
 
 class GameWindow < Gosu::Window
   def initialize
-		super 250, 200
+		super 250, 200, fullscreen: true
 		
 		# Everything is connected to the root node
 		@root_node = Node.new(0, 0, 0)
@@ -40,6 +40,7 @@ class GameWindow < Gosu::Window
 	end
 
 	def draw
+		puts "drawing root node..."
 		@root_node.draw(@root_node.x, @root_node.y, @root_node.z)
 	end
 

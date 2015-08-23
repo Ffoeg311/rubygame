@@ -6,6 +6,7 @@ class Animation
 
   def draw(x, y, z)
     img = @tiles[Gosu::milliseconds / @speed % @tiles.size]
+    puts "hello"
     img.draw(x, y, z)
   end
 end
