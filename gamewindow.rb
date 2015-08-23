@@ -3,8 +3,8 @@ require './entity'
 require './node'
 
 class GameWindow < Gosu::Window
-	def initialize
-		super 250, 200, fullscreen: true
+  def initialize
+		super 250, 200
 		
 		# Everything is connected to the root node
 		@root_node = Node.new(0, 0, 0)
@@ -23,6 +23,8 @@ class GameWindow < Gosu::Window
 		wizard_entity.add_animation(:walk_left, 200, 18, 28, 9, 11)
 		wizard_entity.add_animation(:stand, 200, 18, 28, 7, 7)
 		wizard_entity.set_current_animation(:stand)
+		
+		# Create the player node
 		player_node = Node.new(32, 0, 0)
 		player_node.add_child(wizard_entity)
 
