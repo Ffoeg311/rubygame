@@ -3,6 +3,7 @@ require './entity'
 require './node'
 require './boilerplates/rpg_movement_controller'
 require './boilerplates/rpg_player_node'
+require './boilerplates/background_node'
 
 class GameWindow < Gosu::Window
   def initialize
@@ -12,9 +13,7 @@ class GameWindow < Gosu::Window
 		@root_node = Node.new(0, 0, 0)
 		
 		# Create the background entity
-		background_entity = Entity.new("media/arbre.png", 0, 0, 0)
-		background_node = Node.new(0, 0, 0)
-		background_node.add_child(background_entity)
+		background_node = BackgroundNode.new(0, 0, 0, "media/arbre.png")
 		@root_node.add_child(background_node)
 	
 		# Create the player node
