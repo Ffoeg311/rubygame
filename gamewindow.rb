@@ -2,6 +2,7 @@ require 'gosu'
 require './entity'
 require './node'
 require './boilerplates/rpg_movement_controller'
+require './boilerplates/rpg_player_node'
 
 class GameWindow < Gosu::Window
   def initialize
@@ -14,28 +15,10 @@ class GameWindow < Gosu::Window
 		background_entity = Entity.new("media/arbre.png", 0, 0, 0)
 		background_node = Node.new(0, 0, 0)
 		background_node.add_child(background_entity)
-		@root_node.add_child(background_node)		
+		@root_node.add_child(background_node)
 	
-		# Create the main player
-		wizard_entity = Entity.new("media/ranger1.png", 0, 0, 0)
-		wizard_entity.add_animation(:walk_up,     200, 18, 28,  0, 2)
-		wizard_entity.add_animation(:walk_right,  200, 18, 28,  3, 5)
-		wizard_entity.add_animation(:walk_down,   200, 18, 28,  6, 8)
-		wizard_entity.add_animation(:walk_left,   200, 18, 28,  9, 11)
-		wizard_entity.add_animation(:stand_up,    200, 18, 28,  1, 1)
-		wizard_entity.add_animation(:stand_right, 200, 18, 28,  4, 4)
-		wizard_entity.add_animation(:stand_down,  200, 18, 28,  7, 7)
-		wizard_entity.add_animation(:stand_left,  200, 18, 28, 10, 10)
-		#wizard_entity.set_current_animation(:stand_right)
-		
 		# Create the player node
-		player_node = Node.new(32, 0, 0)
-		player_node.add_child(wizard_entity)
-
-		# Control the main player
-		playercontroller = RPGMovementController.new	
-		player_node.add_controller(playercontroller)
-		
+		player_node = RpgPlayerNode.new(32, 0, 0, "media/ranger1.png")
 		@root_node.add_child(player_node)
 	end
 	
@@ -43,7 +26,7 @@ class GameWindow < Gosu::Window
 		@root_node.update
 	end
 
-	def draw		
+	def draw
 		@root_node.draw(@root_node.x, @root_node.y, @root_node.z)
 	end
 
