@@ -7,7 +7,7 @@ require './boilerplates/background_node'
 
 class GameWindow < Gosu::Window
   def initialize
-		super 250, 200 #, fullscreen: true
+		super 250, 200, fullscreen: true
 		
 		# Everything is connected to the root node
 		@root_node = Node.new(0, 0, 0)

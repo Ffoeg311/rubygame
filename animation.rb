@@ -1,6 +1,6 @@
 class Animation
   def initialize(image_url, speed, tile_width, tile_height, first, last)
-    @speed = speed
+    @speed = (1/ (speed * 0.001))
     @tiles = Gosu::Image::load_tiles(image_url, tile_width, tile_height).slice(first..last)
   end
 
